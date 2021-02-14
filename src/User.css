@@ -1,0 +1,7 @@
+.resultsCard {
+    background-color: rgb(235, 241, 235);
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+}
