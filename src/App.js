@@ -1,29 +1,14 @@
 import axios from 'axios';
 import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
-import ResultsList from './ResultsList';
 import Button from '@material-ui/core/Button';
 import User from './components/User';
 import ReactPaginate from 'react-paginate';
-
 
 function App(){
 
   const userNameRef = useRef();
   let name = '';
-  // const user = {
-  //   id: null,
-  //   name: null,
-  //   bio: null,
-  //   avatar: null,
-  //   url: null,
-  //   followers: null,
-  //   following: null,
-  //   stars: null
-  // };
-
-  const usersList = [];
-
   const options = {
     headers: {
       'Authorization': `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
@@ -37,9 +22,6 @@ function App(){
   const usersPerPage = 10;
   const pagesVisited = page * usersPerPage;
 
-  useEffect(() => {
-   console.log("refreshing")
-  }, []);
 
   const displayUsers = results.slice(pagesVisited, pagesVisited + usersPerPage)
     .map(result => {
@@ -56,18 +38,18 @@ function App(){
 
       response.data.total_count < 1000 ? setResultsCount(response.data.total_count) : setResultsCount(1000);
       setResults(response.data.items);
-
-        }).catch(error => {
-          console.log(error);
-        })
+      
+    }).catch(error => {
+      console.log(error);
+    })
   };
-        
+
   const changePage = ({selected}) => {
     setPage(selected);
   };
 
   return (
-    <>
+    <div>
     <header className="header">
     <h1>Github User Finder</h1>
     <input ref={userNameRef} type="text" placeholder="Enter a Github Username"/>
