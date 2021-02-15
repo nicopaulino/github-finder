@@ -12,6 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
 
 
+
+
 const useStyles = makeStyles((theme) => ({
   expand: {
     transform: 'rotate(0deg)',
@@ -53,6 +55,52 @@ export default function User({ result }) {
   };
     return (
       <Card className="resultsCard" style={{backgroundColor: '#f0ffeb'}}>
+
+      <CardContent>
+        <Typography component="span">
+          <img src={result.avatar_url} width="90" height="90"/>
+          <div>Username: {result.login}</div>
+          <a href={result.html_url} target="_blank" rel="noreferrer noopener">Go to my Github!</a>
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography component={'span'}>
+            {userData.bio ? <div>Bio: {userData.bio}</div> : null}
+            <div>Followers: {userData.following}</div>
+            <div>Following: {userData.followers}</div>
+            {userData.email ? <div>Email: {userData.email}</div> : null}
+            {userData.location ? <div>Location: {userData.location}</div> : null}
+            {userData.twitter ? 
+            <div className="twitter">
+              <div>
+                Blog: 
+              </div>
+            <a href={userData.blog} target="_blank" rel="noreferrer noopener"> {userData.blog}</a>
+            </div> : null}
+            {userData.twitter ? 
+            <div className="twitter">
+              <div>
+                Twitter: 
+              </div>
+            <a href={`https://www.twitter.com/${userData.twitter}`} target="_blank" rel="noreferrer noopener"> {userData.twitter}</a>
+            </div> : null}
+
+          </Typography>
+        </CardContent>
+      </Collapse>
     </Card>
     )
 }
