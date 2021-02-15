@@ -30,4 +30,26 @@ export default function User({ result }) {
 
     const [expanded, setExpanded] = useState(false);
     const [userData, setUserData] = useState([]);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+    axios.get(`https://api.github.com/users/${result.login}`, {
+          headers: {
+            'Authorization': `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
+          },
+          q: 'q'
+          }).then(response => {
+            let user = {
+              bio: response.data.bio,
+              followers: response.data.followers,
+              following: response.data.following,
+              blog: response.data.blog,
+              location: response.data.location,
+              email: response.data.email,
+              twitter: response.data.twitter_username
+            };
+            setUserData(user);
+          })
+  };
+    return (
 }
