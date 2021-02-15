@@ -34,10 +34,17 @@ function App(){
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(0);
 
+  const usersPerPage = 10;
+  const pagesVisited = page * usersPerPage;
 
   useEffect(() => {
    console.log("refreshing")
   }, []);
+
+  const displayUsers = results.slice(pagesVisited, pagesVisited + usersPerPage)
+    .map(result => {
+      return <User key={result.id} result={result}/>
+    })
 
   const getResults = () => {
     name = userNameRef.current.value;
