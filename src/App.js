@@ -62,13 +62,8 @@ function App(){
         })
   };
         
-      })
-      setResults(usersList);
-      setIsLoading(!isLoading);
-
-    }).catch(error => {
-      console.log(error);
-    })
+  const changePage = ({selected}) => {
+    setPage(selected);
   };
 
   return (
