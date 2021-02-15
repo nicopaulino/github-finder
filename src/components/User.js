@@ -24,3 +24,6 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
 }));
+
+export default function User({ result }) {
+}
