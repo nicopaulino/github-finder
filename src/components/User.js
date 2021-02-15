@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Card from '@material-ui/core/Card';
 import './User.css';
 import Collapse from '@material-ui/core/Collapse';
@@ -26,4 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function User({ result }) {
+    const classes = useStyles();
+
+    const [expanded, setExpanded] = useState(false);
+    const [userData, setUserData] = useState([]);
 }
