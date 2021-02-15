@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import ResultsList from './ResultsList';
 import Button from '@material-ui/core/Button';
+import User from './components/User';
+import ReactPaginate from 'react-paginate';
 
 
 function App(){
