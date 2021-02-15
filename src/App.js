@@ -88,6 +88,9 @@ function App(){
         activeClassName={"paginationActive"}
       />
     }
+    {resultsCount === 0 ? null :
+       displayUsers}
+    </div>
   );
 };
 
