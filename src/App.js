@@ -72,11 +72,22 @@ function App(){
     <h1>Github User Finder</h1>
     <input ref={userNameRef} type="text" placeholder="Enter a Github Username"/>
     <Button onClick={getResults} >Submit</Button>
-    {resultsCount === 0 ? <div className="resultsCount">Search for user!</div> : resultsCount === 1 ? <div className="resultsCount">I found {resultsCount} result!</div> : <div className="resultsCount">I found {resultsCount} results!</div>}
+    {resultsCount === 0 ? <div className="resultsCount">Search for users!</div> : null}
     </header>
-    {results.length === 0 ? <ResultsList results={results} /> : null}
-    <ResultsList results={results} />
-    </>
+    {
+      resultsCount === 0 ? null : 
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={Math.ceil(results.length / usersPerPage)}
+        onPageChange={changePage}
+        containerClassName={"paginationButtons"}
+        previousLinkClassName={"previousButton"}
+        nextLinkClassName={"nextButton"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
+    }
   );
 };
 
