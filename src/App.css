@@ -1,9 +1,38 @@
 .header {
     background-color: forestgreen;    
     margin: auto;
-    width: 50%;
+    width: 70%;
     border: 3px solid black;
     padding: 10px;
     text-align: center;
+}
+
+
+.paginationButtons {
+    /* margin: auto; */
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.paginationButtons a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid forestgreen;
+    color: forestgreen;
+    cursor: pointer;
+}
+
+.paginationButtons a:hover {
+    color: white;
+    background-color: forestgreen
+}
+
+.paginationActive a {
+    color: white;
+    background-color: forestgreen;
 }
 
