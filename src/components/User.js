@@ -52,4 +52,7 @@ export default function User({ result }) {
           })
   };
     return (
+      <Card className="resultsCard" style={{backgroundColor: '#f0ffeb'}}>
+    </Card>
+    )
 }
