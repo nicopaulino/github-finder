@@ -30,7 +30,7 @@ function App(){
 
   const [resultsCount, setResultsCount] = useState(0);
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(0);
 
 
   useEffect(() => {
