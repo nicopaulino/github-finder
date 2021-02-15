@@ -38,46 +38,20 @@ function App(){
   }, []);
 
   const getResults = () => {
-
     name = userNameRef.current.value;
 
-    axios.get(`https://api.github.com/search/users?q=${name}+in:user&per_page=50`, {
+    axios.get(`https://api.github.com/search/users?q=${name}+in:user&per_page=100&page=${page}`, {
       headers: options.headers,
       q: 'q'
     }).then(response => {
 
-      setResultsCount(response.data.total_count);
-      // setResults(response.data.items);
+      response.data.total_count < 1000 ? setResultsCount(response.data.total_count) : setResultsCount(1000);
+      setResults(response.data.items);
 
-      response.data.items.forEach(result => {
-
-        let username = result.login;
-        let user;
-
-
-        axios.get(`https://api.github.com/users/${username}`, {
-          headers: options.headers,
-          q: 'q'
-          }).then(response => {
-          let userResult = response.data;
-
-
-          user = {
-            id: result.id,
-            name: username,
-            bio: userResult.bio,
-            avatar: result.avatar_url,
-            url: result.html_url,
-            followers: userResult.followers,
-            following: userResult.following,
-            stars: null
-          };
-
-          usersList.push(user);
-          
         }).catch(error => {
           console.log(error);
         })
+  };
         
       })
       setResults(usersList);
