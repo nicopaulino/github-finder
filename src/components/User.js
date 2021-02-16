@@ -77,7 +77,7 @@ export default function User({ result }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography component={'span'}>
+          <Typography className="extraInfo" component={'span'}>
             {userData.bio ? <div>Bio: {userData.bio}</div> : null}
             <div>Followers: {userData.following}</div>
             <div>Following: {userData.followers}</div>
